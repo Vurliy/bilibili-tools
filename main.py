@@ -30,7 +30,7 @@ class login():
     access_key = ""
 
     async def calc_sign(self,str):
-        str = str + "560c52ccd288fed045859ed18bffd973"
+        str = str + "59b43e04ad6965f34319062b478f83dd"
         hash = hashlib.md5()
         hash.update(str.encode('utf-8'))
         sign = hash.hexdigest()
@@ -38,9 +38,9 @@ class login():
 
     async def get_pwd(self, username, password):
         url = 'https://passport.bilibili.com/api/oauth2/getKey'
-        temp_params = 'appkey=1d8b6e7d45233436'
+        temp_params = 'appkey=4409e2ce8ffd12b8'
         sign = await self.calc_sign(temp_params)
-        params = {'appkey': '1d8b6e7d45233436', 'sign': sign}
+        params = {'appkey': '4409e2ce8ffd12b8', 'sign': sign}
         response = requests.post(url, data=params)
         value = response.json()['data']
         key = value['key']
@@ -54,7 +54,7 @@ class login():
     async def login(self):
         url = "https://passport.bilibili.com/api/v2/oauth2/login"
         user, pwd = await self.get_pwd(login.username, login.password)
-        temp_params = 'appkey=1d8b6e7d45233436&password=' + pwd + '&username=' + user
+        temp_params = 'appkey=4409e2ce8ffd12b8&password=' + pwd + '&username=' + user
         sign = await self.calc_sign(temp_params)
         headers = {"Content-type": "application/x-www-form-urlencoded"}
         payload = temp_params + "&sign=" + sign
@@ -245,12 +245,13 @@ class judge(login):
             "Cookie": "sid=8wfvu7i7"
         }
         ts = CurrentTime()
-        temp_params = "access_key="+login.access_key+"&aid="+str(aid)+"&appkey=1d8b6e7d45233436&build=5260003&from=7&mobi_app=android&platform=android&ts="+str(ts)
+        temp_params = "access_key="+login.access_key+"&aid="+str(aid)+"&appkey=4409e2ce8ffd12b8&build=5260003&from=7&mobi_app=android&platform=android&ts="+str(ts)
         sign = await self.calc_sign(temp_params)
         data = {
             "access_key":login.access_key,
             "aid":aid,
-            "appkey":"1d8b6e7d45233436",
+            "appkey":"4409e2ce8ffd12b8
+            ",
             "build":"5260003",
             "from":"7",
             "mobi_app":"android",
