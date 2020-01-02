@@ -250,8 +250,7 @@ class judge(login):
         data = {
             "access_key":login.access_key,
             "aid":aid,
-            "appkey":"4409e2ce8ffd12b8
-            ",
+            "appkey":"4409e2ce8ffd12b8",
             "build":"5260003",
             "from":"7",
             "mobi_app":"android",
